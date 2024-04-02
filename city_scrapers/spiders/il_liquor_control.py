@@ -11,7 +11,7 @@ class IlLiquorControlSpider(CityScrapersSpider):
     agency = "Illinois Liquor Control Commission"
     timezone = "America/Chicago"
     start_urls = [
-        "https://www2.illinois.gov/ilcc/Divisions/Pages/Legal/"
+        "https://www2.illinois.gov/ilcc/Divisions/Pages/Legal/",
         "Hearing-Schedule-for-Chicago-IL-and-Springfield-IL.aspx",
         "https://www2.illinois.gov/ilcc/Divisions/Pages/Legal/Meeting-minutes.aspx",
     ]  # start_urls[0] contains links future meetings. start_urls[1] contains past
