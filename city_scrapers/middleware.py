@@ -1,7 +1,7 @@
-import random
 
 from city_scrapers_core.items import Meeting
 from scrapy_wayback_middleware import WaybackMiddleware
+import secrets
 
 
 class CityScrapersWaybackMiddleware(WaybackMiddleware):
@@ -12,13 +12,11 @@ class CityScrapersWaybackMiddleware(WaybackMiddleware):
             if "legistar" in item["source"] and "Calendar.aspx" not in item["source"]:
                 links = [item["source"]]
             links.extend(
-                random.sample(
-                    [link.get("href") for link in item.get("links", [])], MAX_LINKS
+                secrets.SystemRandom().sample([link.get("href") for link in item.get("links", [])], MAX_LINKS
                 )
             )
             return links
         if isinstance(item, dict):
-            return random.sample(
-                [doc.get("url") for doc in item.get("documents", [])], MAX_LINKS
+            return secrets.SystemRandom().sample([doc.get("url") for doc in item.get("documents", [])], MAX_LINKS
             )
         return []
